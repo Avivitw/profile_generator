@@ -5,49 +5,35 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-rl.question(`What's your name? Nicknames are also acceptable:)`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
+let profile = '';
+
+const questions = [`What's your name? Nicknames are also acceptable `,
+`What's an activity you like doing? `,
+`What do you listen to while doing that? `,
+`Which meal is your favourite (eg: dinner, brunch, etc.) `,
+`What\'s your favourite thing to eat for that meal? `,
+`Which sport is your absolute favourite? `,
+`What is your superpower? In a few words, tell us what you are amazing at! `
+];
+
+const arrAnswres = [];
+const i = 0;
+
+const processQuestions = function(questions){
+  rl.question(questions[i], (answer) => {
+    console.log(`Thank you for your valuable feedback: ${answer}`);
+    arrAnswres.push(answer);
 
   rl.close();
-});
+  });
 
-rl.question(`What's an activity you like doing?`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
+    if (i < questions.length) {
+    processQuestions(questions[i]);
+    i +=1;
+    }
+}
 
-  rl.close();
-});
+processQuestions(questions);
 
-rl.question(`What do you listen to while doing that?`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
-});
-
-rl.question(`Which meal is your favourite (eg: dinner, brunch, etc.)`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
-});
-
-rl.question(`What's your favourite thing to eat for that meal?`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
-});
-
-rl.question(`Which sport is your absolute favourite?`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
-});
-
-rl.question(`What is your superpower? In a few words, tell us what you are amazing at!`, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
-});
-
-
-
-//Devani loves listening to Ludovico Einaudi while coding, devouring Yak Momos for brunch, 
+//Devani loves listening to Ludovico Einaudi while coding, devouring Yak Momos for brunch,
 //prefers Tennis over any other sport, and is amazing at dropping mad puns at inopportune times
